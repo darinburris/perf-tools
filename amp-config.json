@@ -1,0 +1,25 @@
+{
+
+	"base"			: {
+		"Instructions"		:	"the base properties are for handling top level key/values pairs related to the architecture",
+		"gitRepo"		: 	"https://bitbucket.org/amplifi/perf_tools"
+	},
+	"quality" 			: {
+		"Instructions"			:	"the quality properties are for handling key/values pairs related to the code quality",
+		"doctype" 			: 	"HTML5",
+		"w3cStatusDir" 		: 	"reports/validation/validation-status.json",
+		"w3cReportDir" 		: 	"reports/validation/validation-report.json",
+		"w3cIgnore" 			: 	[
+									"Bad value X-UA-Compatible for attribute http-equiv on element meta.",
+									"Element include not allowed as child of element body in this context.",
+									"Bad value javascript for attribute type on element script: Subtype missing."
+								],
+		"wcag" 				: 	"WCAG2AA",
+		"wcagDir" 			: 	"reports/accessibility",
+		"wcagBaseFile" 		: 	"reports/accessibility.json",
+		"wcagExt" 			: 	"-report-dom",
+		"jshintrcFile"		:	".jshintrc",
+		"jshintrcGruntFile"	:	".jshintrcGrunt",
+		"reportsDir"		:	"reports"
+	}
+}

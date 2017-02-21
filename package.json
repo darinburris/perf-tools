@@ -1,0 +1,30 @@
+{
+  "name": "perf_tools",
+  "version": "1.0.0",
+  "description": "performance tools",
+  "main": "crawl.js",
+  "dependencies": {
+    "fs-extra": "^2.0.0"
+  },
+  "devDependencies": {
+    "crawl": "^0.3.1",
+    "grunt-html": "^7.1.0",
+    "load-grunt-tasks": "^3.5.2",
+    "moment": "^2.17.1",
+    "simplecrawler": "^1.0.3",
+    "sitemap-generator": "^5.0.1",
+    "sitemap-generator-cli": "^5.0.1",
+    "url-parse": "^1.1.7",
+    "xml2js": "^0.4.17"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/amplifi/perf_tools.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/amplifi/perf_tools#readme"
+}
