@@ -51,4 +51,17 @@ module.exports = function(grunt) {
 		}
 	);
 
+	/**
+	 * @description This task omits the ccsmin and uglify tasks for debugging purposes, includes JSDoc
+	 */
+	grunt.registerTask(
+		'html',
+		'Default task executed when typing grunt',
+		function() {
+
+			
+
+		}
+	);
+
 };
