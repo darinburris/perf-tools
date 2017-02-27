@@ -4,7 +4,8 @@
   "description": "performance tools",
   "main": "crawl.js",
   "dependencies": {
-    "fs-extra": "^2.0.0"
+    "fs-extra": "^2.0.0",
+    "scavenger": "^3.2.0"
   },
   "devDependencies": {
     "crawl": "^0.3.1",
