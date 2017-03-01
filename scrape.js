@@ -12,12 +12,6 @@ const msToTime = require('./msToTime');
 //set timer
 var startTimer = new Date();
 
-const vnu = new require("validator-nu").Vnu(
-undefined,
-undefined,
-"/path/to/vnu.jar" // optional, needs to include the file name
-);
-
 console.log(chalk.white.bold.bgGreen(' W3C Validation has started '));
 
 const getDomain = require('./getDomain');
