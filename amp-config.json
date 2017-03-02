@@ -20,6 +20,17 @@
 		"wcagExt" 			: 	"-report-dom",
 		"jshintrcFile"		:	".jshintrc",
 		"jshintrcGruntFile"	:	".jshintrcGrunt",
-		"reportsDir"		:	"reports"
+		"reportsDir"		:	"reports",
+		"pa11yOptions"		:	{
+			"standard"			:	"WCAG2AA",
+			"ignore"				:	[
+										"notice"
+			],
+			"page"				:	{
+									"settings"	:	{
+										"loadImages": "true"
+									}
+			}
+		}
 	}
 }

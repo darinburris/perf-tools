@@ -1,4 +1,5 @@
 const scavenger = require('scavenger');
+const ampConfig = require('./amp-config.json');
 const cheerio = require('cheerio');
 const fs = require('fs');
 const vnu = require('validator-nu');
@@ -6,8 +7,18 @@ const JSONLint = require( 'json-lint' );
 const chalk = require('chalk');
 const report = {};
 const argv = require('yargs').argv;
+const task = argv.task;
 let domain = argv.domain;
 const msToTime = require('./msToTime');
+const pa11y = require('pa11y');
+const pa11yOptions = {
+	standard : 'WCAG2AA',
+	ignore : ['notice'],
+	page : {
+		settings : {loadImages: false}
+	}
+};
+const pa11yTest = pa11y(pa11yOptions);
 
 //set timer
 var startTimer = new Date();
@@ -117,7 +128,9 @@ scavenger.scrape(
 				console.log('Ooops, there\'s been a problem, ', e);
 			}
 		);
+
 	}
+
 ).then(
 	(report) => {}
 );
