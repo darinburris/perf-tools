@@ -23,13 +23,18 @@
 		"reportsDir"		:	"reports",
 		"pa11yOptions"		:	{
 			"standard"			:	"WCAG2AA",
-			"ignore"				:	[
-										"notice"
+			"ignore"		:	[
+				"notice"
 			],
-			"page"				:	{
-									"settings"	:	{
-										"loadImages": "true"
-									}
+			"page"			:	{
+				"settings"	:	{
+					"loadImages": "true"
+				}
+			},
+			"log": {
+				"debug": "console.log.bind(console)",
+				"error": "console.error.bind(console)",
+				"info": "console.log.bind(console)"
 			}
 		}
 	}

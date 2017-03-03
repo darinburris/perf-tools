@@ -5,7 +5,7 @@ var SitemapGenerator = require('sitemap-generator'),
 	chalk = require('chalk'),
 	nodePath = require('path'),
 	argv = require('yargs').argv,
-	domain = argv.domain,
+	domainProvided = argv.domain,
 	output,
 	fileName,
 	path,
@@ -16,7 +16,7 @@ var SitemapGenerator = require('sitemap-generator'),
 	startTimer;
 
 	const getDomain = require('./getDomain');
-	domain = getDomain(domain);
+	domain = getDomain(domainProvided);
 
 // create generator
 var generator = new SitemapGenerator(argv.domain);
@@ -35,13 +35,6 @@ generator.on(
 // register event listeners
 generator.on(
 	'done',
-
-	/*
-	 * PURPOSE : Callback run at the completion of the sitemap process, used to inititate the conversion from XML into JSON, the convertXML method
-	 *  PARAMS : sitemap - the the resulting sitemap file form the sitemap generator method
-	 * RETURNS : functio
-	 *   NOTES :
-	 */
 	function (sitemap) {
 
 		path = ampConfig.quality.reportsDir + '/' + domain + '/sitemap/';
