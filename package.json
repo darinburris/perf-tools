@@ -12,6 +12,7 @@
     "vnu-jar": "^17.2.1"
   },
   "devDependencies": {
+    "chalk": "^2.3.0",
     "crawl": "^0.3.1",
     "grunt-html": "^7.1.0",
     "load-grunt-tasks": "^3.5.2",

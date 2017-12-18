@@ -2,16 +2,14 @@ var SitemapGenerator = require('sitemap-generator'),
 	yargs = require('yargs').argv,
 	ampConfig = require('./amp-config.json'),
 	fs = require('fs'),
+	chalk = require('chalk'),
 	fse = require('fs-extra'),
 	request = require('request'),
 	cheerio = require('cheerio'),
 	nodePath = require('path'),
 	htmllint = require('htmllint'),
 	domain = yargs.domain,
-	domain = domain.toString(),
 	parse = require('url-parse'),
-	url = parse(domain, true),
-	host = url.host,
 	hostNoSuffixPrefix,
 	hostNoSuffixIndx,
 	hostNoPrefixIndx,
@@ -26,14 +24,35 @@ var SitemapGenerator = require('sitemap-generator'),
 	reportJSON = {},
 	currUrl;
 
-//get/set domain name and associated variables
-hostNoSuffixIndx = host.lastIndexOf('.');
-hostNoPrefixIndx = host.indexOf('www.');
-hostNoSuffixPrefix = host.substring(0,hostNoSuffixIndx);
-hostNoSuffixIndx = hostNoSuffixPrefix.lastIndexOf('.');
-hostNoSuffixPrefix = hostNoSuffixPrefix.substring(hostNoSuffixIndx + 1);
-date =  moment().format('YYYY-MM-DD-hmmssa');
-fileName = hostNoSuffixPrefix + '.xml';
+	console.log('domain = ' + domain);
+	console.log('typeof domain = ' + typeof domain);
+
+	if((typeof domain !== 'undefined') && (typeof domain !== undefined)) {
+
+		console.log('there is a domain');
+		domain = domain.toString();
+		var	url = parse(domain, true),
+			host = url.host;
+
+		console.log(chalk.white.bgRed.bold(domain));
+
+		//get/set domain name and associated variables
+		var hostNoSuffixIndx = host.lastIndexOf('.');
+		var hostNoPrefixIndx = host.indexOf('www.');
+		var hostNoSuffixPrefix = host.substring(0,hostNoSuffixIndx);
+
+		hostNoSuffixIndx = hostNoSuffixPrefix.lastIndexOf('.');
+		hostNoSuffixPrefix = hostNoSuffixPrefix.substring(hostNoSuffixIndx + 1);
+
+		var fileName = hostNoSuffixPrefix + '.xml';
+
+	} else {
+		
+		console.log(chalk.white.bgRed.bold(`  Please provide a domain  `));
+		return;
+	}
+
+	var date =  moment().format('YYYY-MM-DD-hmmssa');
 
 function siteMap(args){
 
@@ -59,6 +78,17 @@ function siteMap(args){
 
 		}
 
+	);
+
+	generator.on(
+		'fetch',
+		function (status, url) {
+			if(status === 'OK'){
+				console.log('fetching: ',url, ' - status: ',chalk.white.bold.bgGreen(' ',status,' '));
+			} else {
+				console.log('fetching: ',url, ' - status: ',chalk.white.bold.bgRed(' ',status,' '));
+			}
+		}
 	);
 
 	function convertXML(fileName){
